@@ -1,5 +1,5 @@
-#include <SFML/Graphics.hpp>
 #include "game.hpp"
+#include <SFML/Graphics.hpp>
 
 int main()
 {
@@ -8,5 +8,5 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(screen_width, screen_height), "Dawn of Matti");
 	window.setFramerateLimit(60);
 
-	game(window);
+	game(window, screen_width, screen_height);
 }
