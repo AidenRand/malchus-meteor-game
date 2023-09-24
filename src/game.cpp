@@ -6,7 +6,7 @@ void game(sf::RenderWindow& window, float screen_width, float screen_height)
 	// Player variables
 	int player_width = 50;
 	int player_height = 50;
-	float player_speed = 1.0f;
+	float player_speed = 2.0f;
 	int rotation_angle = 180;
 	int player_x = (screen_width / 2) - player_width;
 	int player_y = (screen_height / 2) - player_height;

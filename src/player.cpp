@@ -6,6 +6,7 @@ Player::Player(int player_width, int player_height, int player_x, int player_y)
 	player.setSize(sf::Vector2f(player_width, player_height));
 	player.setPosition(sf::Vector2f(player_x, player_y));
 	player.setOrigin(sf::Vector2f(player_width / 2, player_height / 2));
+	player.setFillColor(sf::Color::Red);
 }
 
 void Player::drawTo(sf::RenderWindow& window)
@@ -44,15 +45,24 @@ void Player::movePlayer(sf::Keyboard::Key move_up_key, float player_speed, float
 	}
 	else
 	{
-		if (velocity.y <= 0.5f)
+		// Decelerate player when W is released
+		if (velocity.x >= 0 && velocity.y >= 0)
 		{
-			velocity.y = 0;
+			velocity.y -= 0.5;
+			velocity.x -= 0.5;
 		}
-		if (velocity.x <= 0.5f)
+
+		if (velocity.y <= 0.01f)
 		{
-			velocity.x = 0;
+			direction.y = 0;
+		}
+		if (velocity.x <= 0.01f)
+		{
+			direction.x = 0;
 		}
 	}
+
+	std::cout << velocity.y << "\n";
 
 	player.move(direction * dt);
 }
